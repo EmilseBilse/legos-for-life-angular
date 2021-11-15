@@ -1,0 +1,26 @@
+.topbar {
+    width:100vw;
+    height:5vh;
+    background-color: #3d3d3d;
+}
+
+.card {
+    margin-left: 24px;
+    float:left;
+    list-style: none;
+}
+
+.card a {
+    font-size: 5vh;
+    color:#b7c8ca;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+.card a:hover {
+    color:#d0edf0;
+}
+
+/*.link-list {
+    margin-left:24px;
+}*/
