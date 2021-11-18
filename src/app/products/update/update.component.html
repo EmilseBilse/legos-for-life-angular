@@ -1,1 +1,24 @@
-<p>update works!</p>
+<form [formGroup]="updateForm" (ngSubmit)="doUpdate()">
+    <label for="id">Product ID: </label><br />
+    <input [readOnly]="true" id="id" type="text" formControlName="id">
+    <br />
+    <label for="name">Product Name: </label><br />
+    <input id="name" type="text" formControlName="name">
+  
+    <br />
+  
+    <div *ngIf="name && name.invalid && (name.dirty || name.touched)"
+         class="alert alert-danger">
+  
+      <div *ngIf="name.errors?.required">
+        Name is required.
+      </div>
+    </div>
+  
+    <br /><br />
+  
+    <button type="submit"
+            class="btn btn-primary"
+            [disabled]="!updateForm.valid">Save</button>
+  </form>
+  
