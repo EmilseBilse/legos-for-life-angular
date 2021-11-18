@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from '../shared/products.service';
 
 @Component({
   selector: 'app-inno-tech-delete',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteComponent implements OnInit {
 
-  constructor() { }
+  private selectedId: number | undefined;
+
+  constructor(private _route : ActivatedRoute, private _router : Router, private _productService : ProductsService) { }
 
   ngOnInit(): void {
+    this.selectedId = Number(this._route.snapshot.paramMap.get('id'));
+    this._productService.getProduct(this.selectedId).subscribe(product => {
+      this._productService.deleteProduct(product).subscribe(product => {
+        this._router.navigateByUrl('/').then(r => {});
+      });
+    });
   }
 
 }
