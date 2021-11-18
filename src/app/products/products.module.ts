@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
   declarations: [
-    ProductsListComponent
+    ProductsListComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,
