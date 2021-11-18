@@ -1,1 +1,21 @@
-<p>create works!</p>
+<form [formGroup]="createForm" (ngSubmit)="doCreate()">
+    <label for="name">Product Name: </label><br />
+    <input id="name" type="text" formControlName="name">
+  
+    <br />
+  
+    <div *ngIf="name && name.invalid && (name.dirty || name.touched)"
+         class="alert alert-danger">
+  
+      <div *ngIf="name.errors?.required">
+        Name is required.
+      </div>
+    </div>
+  
+    <br /><br />
+  
+    <button type="submit"
+            class="btn btn-primary"
+            [disabled]="!createForm.valid">Save</button>
+  </form>
+  

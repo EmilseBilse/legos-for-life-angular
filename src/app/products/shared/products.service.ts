@@ -18,4 +18,16 @@ export class ProductsService {
   getProduct(id: number): Observable<ProductDto> {
     return this._http.get<ProductDto>(`${environment.api}/product/${id}`)
   }
+
+  createProduct(product: ProductDto) {
+    return this._http.post<ProductDto>(environment.api + '/product',product);
+  }
+
+  deleteProduct(product: ProductDto) {
+    return this._http.delete<ProductDto>(environment.api + '/product/' + product.id);
+  }
+
+  updateProduct(product: ProductDto): Observable<ProductDto> {
+    return this._http.put<ProductDto>(environment.api + '/product/' + product.id, product);
+  }
 }
