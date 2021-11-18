@@ -5,12 +5,18 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ProductComponent } from './product/product.component';
+import { CreateComponent } from './create/create.component';
+import { DeleteComponent } from './delete/delete.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
   declarations: [
     ProductsListComponent,
-    ProductComponent
+    ProductComponent,
+    CreateComponent,
+    DeleteComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,
