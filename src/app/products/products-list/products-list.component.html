@@ -1,4 +1,11 @@
 <h1>Products</h1>
+<a routerLink="create">Create New Product</a>
 <ul class="item-list">
-  <li class="item" *ngFor="let prod of products"><a [routerLink]="['/products/product', prod.id]"><p>Id: {{prod.id}} Name: {{prod.name}}</p></a></li>
+  <li class="item" *ngFor="let prod of products">
+    <a routerLink="product/{{prod.id}}">
+      <p>Id: {{prod.id}} Name: {{prod.name}}</p>
+    </a>
+    <a routerLink="update/{{prod.id}}">Edit</a>
+    <a routerLink="delete/{{prod.id}}">Delete</a>
+  </li>
 </ul>
