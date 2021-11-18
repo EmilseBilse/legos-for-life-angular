@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -12,14 +13,23 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductComponent implements OnInit {
 
-  product$: Observable<ProductDto> | undefined
+  private selectedId: number | undefined;
+  public selectedProduct: ProductDto | undefined;
 
-  constructor(private service: ProductsService, private route: ActivatedRoute) { }
+  detailsForm = new FormGroup( {
+    id: new FormControl({ disabled: true }),
+    name: new FormControl('', Validators.required)
+  });
+
+  constructor(private _route : ActivatedRoute, private _router : Router, private _productService : ProductsService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params=>{
-      this.product$=this.service.getProduct(Number.parseInt(params['id']));
-    })
+    this.selectedId = Number(this._route.snapshot.paramMap.get('id'));
+
+    this._productService.getProduct(this.selectedId).subscribe(product => {
+      this.selectedProduct = product;
+      this.detailsForm.patchValue(product);
+    });
   }
 
 }
