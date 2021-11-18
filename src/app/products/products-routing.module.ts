@@ -5,12 +5,14 @@ import { CreateComponent } from './create/create.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   { path: '', component: ProductsListComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'create', component: CreateComponent, canActivate: [WriteProductsGuard] },
-  { path: 'delete/:id', component: DeleteComponent, canActivate: [WriteProductsGuard] }
+  { path: 'delete/:id', component: DeleteComponent, canActivate: [WriteProductsGuard] },
+  { path: 'update/:id', component: UpdateComponent, canActivate: [WriteProductsGuard] },
 ];
 
 @NgModule({
